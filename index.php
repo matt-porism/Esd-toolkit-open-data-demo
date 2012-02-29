@@ -35,6 +35,7 @@ function renderConcept(concept $concept) {
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 	<head>
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
 		<title>Open data demo</title>
 		<link rel="stylesheet" href="styles/cupertino/jquery-ui-1.8.17.custom.css" type="text/css" />
 		<link rel="stylesheet" href="scripts/themes/default/style.css" type="text/css" />
