@@ -9,29 +9,38 @@ class conceptSection {
 	public $authority;
 	public $service;
 	
+
+	public static function sortByLabel($a, $b) {
+		return strcmp($a->label, $b->label);
+	}
 	
 	private function addNavigationLinks(database $database, navigation $navigation) {
 		$navigation->links = $database->selectNavigation_links($navigation->uri);
+		usort($navigation->links, array("conceptSection", "sortByLabel"));
 	}
 	
 	
 	private function addGeographicNeighbours(database $database, authority $authority) {
 		$authority->geographicNeighbours = $database->selectGeographicNeighbouringAuthorities($authority->uri);
+		usort($authority->geographicNeighbours, array("conceptSection", "sortByLabel"));
 	}
 	
 	
 	private function addGeographicParents(database $database, authority $authority) {
 		$authority->geographicParents = $database->selectGeographicParentAuthorities($authority->uri);
+		usort($authority->geographicParents, array("conceptSection", "sortByLabel"));
 	}
 	
 	
 	private function addGeographicChildren(database $database, authority $authority) {
 		$authority->geographicChildren = $database->selectGeographicChildAuthorities($authority->uri);
+		usort($authority->geographicChildren, array("conceptSection", "sortByLabel"));
 	}
 	
 	
 	private function addServiceLinks(database $database, authority $authority, service $service) {
 		$authority->links = $database->selectService_interaction_links($authority->uri, $service->uri);
+		usort($authority->links, array("conceptSection", "sortByLabel"));
 	}
 	
 	
